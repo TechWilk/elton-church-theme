@@ -1,0 +1,45 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+<section>
+  <div>
+    <h2 class="title">{{ service.title|e }}</h2>
+    {% if service.image is not empty %}
+      <img class="right" src="{{ service.image|image(520,350) }}" width="520" height="350" alt="{{ service.name|e }}">
+    {% endif %}
+    <div class="text">
+      {{ service.description }}
+    </div>
+  </div>
+</section>
+
+{% set buildings = service.related('buildings') %}
+<section>
+  <div>
+    <h3>When and where</h3>
+    {% if buildings|length > 0 %}
+      {% for item in buildings %}
+        <a class="btn btn-outline" href="{{ item.link }}">{{ item.title }}</a>
+      {% endfor %}
+    {% endif %}
+      <p>
+        {% if (service.weeks is not empty) and (service.day is not empty) %}
+          {{ service.weeks|join(', ')|e }} {{ service.day|e }}
+          of month
+        {% endif %}
+      </p>
+    <p>{{ service.time }}</p>
+  </div>
+</section>
+
+{% if service.facilities != "" %}
+<section>
+  <div>
+    <h3 class="title">Facilities</h3>
+    {{ service.facilities }}
+  </div>
+</section>
+{% endif %}
+
+{% endblock content %}

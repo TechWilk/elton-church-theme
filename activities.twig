@@ -1,0 +1,24 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% setcontent activities = 'activities' %}
+{% if activities|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Activities</h2>
+    {% for activity in activities %}
+      <a class="border no-link" href="{{ activity.link }}">
+        {% if activity.image is not empty %}
+          <img src="{{ activity.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ activity.name|e }}">
+        {% endif %}
+        <h4>{{ activity.name|e }}</h4>
+        <p>{{ activity.teaser }}</p>
+        <p class="link btn btn-outline">More info</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% endblock content %}

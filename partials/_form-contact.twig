@@ -1,0 +1,17 @@
+{% extends 'partials/_form.twig' %}
+
+{% block extraformstartfields %}
+
+{% setcontent people = 'people' %}
+<span>
+  <label for="contact_custom" class="required">Send email to</label>
+  <select id="contact_custom" name="contact[custom]">
+    {% for person in people %}
+      {% if person.email != "" %}
+      <option value="{{ person.slug }}">{{ person.firstname }} {{ person.lastname }} ({{ person.role }})</option>
+      {% endif %}
+    {% endfor %}
+  </select>
+</span>
+
+{% endblock %}

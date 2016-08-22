@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ paths.theme }}style/main.css">
+  <title>
+    {%- if record.title is defined %}{{ record.title | e }} | {% elseif record.name is defined -%}{{ record.name | e }} | {% endif %}
+    {{ app.config.get('general/sitename') -}}
+    {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
+  </title>
+  {% block headincludes %}
+  {% endblock headincludes %}
+</head>
+<body>
+  <header>
+    {{ include('partials/_header.twig') }}
+  </header>
+  <main>
+    {% block content %}
+    {% endblock content %}
+  </main>
+  <footer>
+    {{ include('partials/_footer.twig') }}
+  </footer>
+  {% block bottomincludes %}
+  {% endblock bottomincludes %}
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% if activity.date|date("d/m/Y") == activity.until|date("d/m/Y") %}
+  {% set date = "#{activity.date|date('l jS M Y g:ia')} - #{activity.until|date('g:ia')}"  %}
+{% else %}
+  {% set date = "#{activity.date|date('l jS M Y g:ia')} - #{activity.until|date('l jS M Y g:ia')}"  %}
+{% endif %}
+
+<section>
+  <div>
+    <h2 class="title">{{ activity.name|e }}</h2>
+    {#{% if activity.image is not empty %}
+      <img class="" src="{{ activity.image|image(520,350) }}" width="520" height="350" alt="{{ activity.teaser|e }}">
+      <img class="" src="{{ activity.image|image(300,200) }}" width="300" height="200" alt="{{ activity.teaser|e }}">      
+    {% endif %}#}
+    <div class="text">
+      {{ activity.body }}
+    </div>
+    <div class="text">
+      {% setcontent disclaimer = 'blocks/disclaimer-dbs' %}
+      <h3>{{ disclaimer.title }}</h3>
+      {{ disclaimer.content }}
+    </div>
+  </div>
+</section>
+<section>
+  <div>
+    <h3 class="title">When and where</h3>
+    {% for meeting in activity.meetings %}
+      <div>
+        {% set buildingid = meeting.get('location') %}
+        {% setcontent building = "building/#{buildingid}" %}
+        <a href="{{ building.link }}" class="btn btn-outline">{{ building.name }}</a>
+        <p>{{ meeting.get('week') }} {{ meeting.get('day') }} of month</p>
+        <p>{{ meeting.get('from')|date('g:ia') }} - {{ meeting.get('until')|date('g:ia') }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{#{% setcontent specialActivities = 'activities' where { until: '>now', id: "!#{activity.id}" } limit 3 orderby 'date' %}
+{% if specialActivities|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Other Upcoming Activities</h2>
+    {% for activity in specialActivities %}
+      <div class="border">
+        {% if activity.image is not empty %}
+          <img src="{{ activity.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ activity.title|e }}">
+        {% endif %}
+        <h3>{{ activity.title|e }}</h3>
+        <p>{{ activity.teaser|e }}</p>
+        <a href="{{ activity.link }}" class="btn btn-outline">Find out more</a>
+      </div>
+    {% endfor %}
+    {% if specialActivities|length == 3 %}
+      <div>
+        <a href="{{ paths.root }}whats-on/Activities" class="btn btn-outline">View more</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}#}
+
+
+{% endblock content %}

@@ -1,0 +1,80 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% setcontent events = 'events' where { until: '>now' } orderby 'date' %}
+{% if events|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Upcoming Events</h2>
+    {% for event in events %}
+      <div class="border">
+        {% if event.image is not empty %}
+          <img src="{{ event.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ event.title|e }}">
+        {% endif %}
+        <h3>{{ event.title|e }}</h3>
+        <p>{{ event.teaser|e }}</p>
+        <a href="{{ event.link }}" class="btn btn-outline">Find out more</a>
+      </div>
+    {% endfor %}
+    {% if events|length == 3 %}
+      <div>
+        <a href="{{ paths.root }}whats-on/events" class="btn btn-outline">View past events</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% setcontent activities = 'activities' %}
+{% if activities|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Activities</h2>
+    {% for group in activities %}
+      <a class="border no-link" href="{{ group.link }}">
+        {% if group.image is not empty %}
+          <img src="{{ group.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ group.name|e }}">
+        {% endif %}
+        <h3>{{ group.name|e }}</h3>
+        <p>{{ group.teaser }}</p>
+        <p class="link btn btn-outline">More info</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% setcontent services = 'services' %}
+{% if services|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Services</h2>
+    {% for service in services %}
+      <div class="item">
+        <a href="{{ service.link }}" class="btn btn-outline"><h3>{{ service.title|e }}</h3></a>
+        <p><strong>{{ service.time|e|default('Various times') }}</strong></p>     
+        <p>
+          {% if (service.weeks is not empty) and (service.day is not empty) %}
+            <strong>{{ service.weeks|join(', ')|e }} {{ service.day|e }}</strong>
+            of month at
+          {% endif %}
+          <span class="newline">
+            {% set buildings = service.related('buildings') %}
+            {% if buildings|length > 0 %}
+              {% for building in buildings %}
+                <a href="{{ building.link }}">{{ building.name|e }}</a>
+              {% endfor %}
+            {% else %}
+              various locations
+            {% endif %}
+          </span>
+        </p>
+        <p>{{ service.teaser|e }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% setcontent buildings = 'buildings' %}
+{% if buildings|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Buildings</h2>
+    {% for building in buildings %}
+      <a class="border" href="{{ building.link }}">
+        {% if building.image is not empty %}
+          <img src="{{ building.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ building.name|e }}">
+        {% endif %}
+        <h4>{{ building.name|e }}</h4>
+        <p class="link btn btn-outline">More info</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

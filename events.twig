@@ -1,0 +1,45 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% setcontent events = 'events' where { until: '>now' } orderby 'date' %}
+{% if events|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Events</h2>
+    <h3>Upcoming Events</h3>
+    {% for event in events %}
+      <div class="border">
+        {% if event.image is not empty %}
+          <img src="{{ event.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ event.title|e }}">
+        {% endif %}
+        <h3>{{ event.title|e }}</h3>
+        <p>{{ event.teaser|e }}</p>
+        <a href="{{ event.link }}" class="btn btn-outline">Find out more</a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% setcontent events = 'events' where { until: '<=now' } orderby 'date' %}
+{% if events|length > 0 %}
+<section id="previous">
+  <div>
+    <h3 class="title">Past Events</h3>
+    {% for event in events %}
+      <div class="border">
+        {% if event.image is not empty %}
+          <img src="{{ event.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ event.title|e }}">
+        {% endif %}
+        <h3>{{ event.title|e }}</h3>
+        <p>{{ event.teaser|e }}</p>
+        <a href="{{ event.link }}" class="btn btn-outline">Find out more</a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

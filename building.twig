@@ -1,0 +1,115 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+<section>
+  <div>
+    <h2 class="title">{{ building.title|e }}</h2>
+    {% if building.image is not empty %}
+      <img class="right" src="{{ building.image|image(520,350) }}" width="520" height="350" alt="{{ building.name|e }}">
+    {% endif %}
+    <div class="text">
+      {{ building.about }}
+    </div>
+  </div>
+</section>
+
+{% set services = building.related('services') %}
+{% set events = building.related('events') %}
+{% setcontent Activities = 'Activities' %}
+{% set Activitiesexist = false %}
+
+{# Check if any Activities exist at building #}
+{% for item in Activities %}
+  {% for meeting in item.meetings %}
+    {% if meeting.get('location') == building.id %}
+      {% set Activitiesexist = true %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<section>
+  <div>
+    <h3 class="title">What's on at {{ building.title|e }}</h3>
+    {% if services|length > 0 %}
+      <h4>Services</h4>
+      {% for item in services %}
+        <a class="btn btn-outline" href="{{ item.link }}">{{ item.title }}</a>
+      {% endfor %}
+    {% endif %}
+    {% if Activitiesexist %}
+      <h4>Activities</h4>
+      {% for item in Activities %}
+        {% for meeting in item.meetings %}
+          {% if meeting.get('location') == building.id %}
+            <a class="btn btn-outline" href="{{ item.link }}">{{ item.title }}</a>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+    {% if events|length > 0 %}
+      <h4>Events</h4>
+      {% for item in events if date(item.until) >= date() %}
+        <a class="btn btn-outline" href="{{ item.link }}">{{ item.title }}</a>
+      {% endfor %}
+    {% endif %}
+
+  </div>
+</section>
+
+<section>
+  <div>
+    <h3>Address</h3>
+    <small>Navigation only - find our postal address on the <a href="{{ paths.root }}contact">contact page</a>.</small>
+    <pre class="postal-address">{{ building.address }}</pre>
+  </div>
+</section>
+
+{% if building.location.longitude is defined %}
+<section>
+  <div>
+    <h3 class="title">Map</h3>
+    <div id='map'>
+      <p>Map failed to load, find <a href="https://www.google.co.uk/maps/@{{ building.location.latitude }},{{ building.location.longitude }},19z">{{ building.name|e }} on Google Maps</a></p>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if building.facilities != "" %}
+<section>
+  <div>
+    <h3 class="title">Facilities</h3>
+    <div class="text">
+      {{ building.facilities }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}
+
+
+{# Javascript #}
+
+{% block bottomincludes %}
+<script type="text/javascript">
+var map;
+function initMap() {
+  var myLatLng = {lat: {{ building.location.latitude }}, lng: {{ building.location.longitude }}};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: '{{ building.name|e('js') }}'
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ config.get('general/google_api_key') }}&callback=initMap" async defer></script>
+{% endblock bottomincludes %}

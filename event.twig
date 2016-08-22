@@ -1,0 +1,64 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% if event.date|date("d/m/Y") == event.until|date("d/m/Y") %}
+  {% set date = "#{event.date|date('l jS M Y g:ia')} - #{event.until|date('g:ia')}"  %}
+{% else %}
+  {% set date = "#{event.date|date('l jS M Y g:ia')} - #{event.until|date('l jS M Y g:ia')}"  %}
+{% endif %}
+
+<section>
+  <div>
+    <div class="title">
+      <h2>{{ event.title|e }}</h2>
+      <h3>{{ date }}</h3>
+    </div>
+    {% if event.image is not empty %}
+      <img class="right" src="{{ event.image|image(520,350) }}" width="520" height="350" alt="{{ event.teaser|e }}">
+    {% endif %}
+    <div class="text">
+      {{ event.body }}
+    </div>
+  </div>
+</section>
+
+{% set buildings = event.related('buildings') %}
+<section>
+  <div>
+    <h3 class="title">When and where</h3>
+    {% for building in buildings %}
+      <div>
+        <p>{{ date }}</p>
+        <a href="{{ building.link }}" class="btn btn-outline">{{ building.name }}</a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% setcontent specialevents = 'events' where { until: '>now', id: "!#{event.id}" } limit 3 orderby 'date' %}
+{% if specialevents|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Other Upcoming Events</h2>
+    {% for event in specialevents %}
+      <div class="border">
+        {% if event.image is not empty %}
+          <img src="{{ event.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ event.title|e }}">
+        {% endif %}
+        <h3>{{ event.title|e }}</h3>
+        <p>{{ event.teaser|e }}</p>
+        <a href="{{ event.link }}" class="btn btn-outline">Find out more</a>
+      </div>
+    {% endfor %}
+    {% if specialevents|length == 3 %}
+      <div>
+        <a href="{{ paths.root }}whats-on/events" class="btn btn-outline">View more</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

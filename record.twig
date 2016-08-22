@@ -1,0 +1,10 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+<section>
+  <div>
+    <h2 class="title">{{ record.title|e }}</h2>
+    {{ record.content }}
+  </div>
+</section>
+{% endblock content %}

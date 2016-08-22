@@ -1,0 +1,60 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% setcontent pages = 'pages' where { groups: 'about' } %}
+<section>
+  <div>
+    <h2 class="title">About Us</h2>
+    <h3>Learn about us</h3>
+    {% if pages|length > 0 %}
+      {% for page in pages %}
+        <div>
+          <a class="btn btn-outline" href="{{ page.link }}"><h4>{{ page.title|e }}</h4></a>
+        </div>
+      {% endfor %}
+    {% else %}
+    <p>There are no pages in the group 'about'.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% setcontent buildings = 'buildings' %}
+{% if buildings|length > 0 %}
+<section>
+  <div>
+    <h3 class="title">Buildings</h3>
+    {% for building in buildings %}
+      <a class="border" href="{{ building.link }}">
+        {% if building.image is not empty %}
+          <img src="{{ building.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ building.name|e }}">
+        {% endif %}
+        <h4>{{ building.name|e }}</h4>
+        <p class="link btn btn-outline">More info</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% setcontent people = 'people' where { show: true } %}
+{% if people|length > 0 %}
+<section>
+  <div>
+    <h3 class="title">People</h3>
+    {% for person in people %}
+      <a class="border" href="{{ person.link }}">
+        {% if person.image is not empty %}
+          <img src="{{ person.image|thumbnail(200,200) }}" width="200" height="200" alt="{{ person.name|e }}">
+        {% endif %}
+        <h4>{{ person.firstname|e }} {{ person.lastname|e }}</h4>
+        <h5>({{ person.role|e }})</h5>
+        <p class="link btn btn-outline">More info</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

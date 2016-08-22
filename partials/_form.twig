@@ -1,0 +1,87 @@
+{% form_theme form 'boltforms_custom.twig' %}
+
+<div class="form">
+{% if debug %}
+    <p class="error">[Debug] Notification debug mode enabled!</p>
+{% endif %}
+
+{% if error and app.request.get(formname) %}
+    <p class="boltform-error">{{ error }}</p>
+{% endif %}
+
+{% if message and app.request.get(formname) %}
+    <p class="boltform-message">{{ message }}</p>
+{% endif %}
+
+{% if not sent %}
+
+    {{ html_pre }}
+
+    {% if recaptcha.enabled and recaptcha.theme|default('clean') %}
+    <script>
+        var RecaptchaOptions = {
+            theme : '{{ recaptcha.theme }}'
+        };
+    </script>
+    {% endif %}
+
+    {{ form_start(form, {'attr': {'name': formname}}) }}
+        {{ form_errors(form) }}
+
+        {# Extra fields (extend twig template) #}
+        {% block extraformstartfields %}
+        {% endblock %}
+
+        {# Main form fields #}
+        {% for key, value in fields  %}
+            {% if (value.config.name != 'submit') %}
+            <span{% if form[key].vars.attr.class is defined %} class="{{ form[key].vars.attr.class }}"{% endif %}>
+                {{ form_label(form[key]) }}
+                <span class="error">{{ form_errors(form[key]) }}</span>
+                {% set value = {} %}
+                {% if defaults[key]|default() %}
+                    {% set value = { 'value': defaults[key]|default() } %}
+                {% endif %}
+                {# input field #}
+                {% if key != 'custom' %}
+                    {{ form_widget(form[key], value) }}
+                {% else %}
+                    {# Hack to remove custom field which is custom rendered in _form-contact.twig template #}
+                    {{ form_widget(form[key], value)|slice(0,0) }}
+                {% endif %}
+            </span>
+            {% endif %}
+        {% endfor %}
+
+        {# Extra fields (extend twig template) #}
+        {% block extraformendfields %}
+        {% endblock %}
+
+        {# Recaptcha #}
+        {% if recaptcha.enabled %}
+
+            {% if not recaptcha.valid %}
+            <ul class="boltform-error">
+                <li class="boltform-errors">{{ recaptcha.error_message }}</li>
+            </ul>
+            {% endif %}
+
+            <div class="boltform-row">
+                <label for="form_message" class="required">{{ recaptcha.label|trans({}, translation_domain) }}</label>
+                <script src="https://www.google.com/recaptcha/api.js?hl={{ htmllang() }}" async defer></script>
+                <div class="g-recaptcha" data-sitekey="{{ recaptcha.public_key }}"></div>
+            </div>
+
+        {% endif %}
+
+        {# Submit #}
+        <span{% if form.submit.vars.attr.class is defined %} class="{{ form.submit.vars.attr.class }}"{% endif %}>
+            {{ form_widget(form.submit) }}
+        </span>
+
+    {{ form_end(form) }}
+
+{% else %}
+    {{ html_post }}
+{% endif %}
+</div>

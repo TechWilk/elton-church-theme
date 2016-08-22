@@ -1,0 +1,55 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+<section>
+  <div>
+    <h2 class="title">{{ news.headline|e }}</h2>
+    <div class="news-article text">
+      {{ news.body }}
+    </div>
+    <small>Written on {{ news.datepublish|date('jS M Y') }}</small>
+    {% set previous = record.previous('id') %}
+    {% set next = record.next('id') %}
+    {% if previous or next %}
+        <p>
+            {% if previous %}
+                <a href="{{ previous.link }}">&laquo; {{ previous.headline|e }}</a>
+            {% endif %}
+            {% if previous and next %}
+            -
+            {% endif %}
+            {% if next %}
+                <a href="{{ next.link }}">{{ next.headline|e }} &raquo;</a>
+            {% endif %}
+        </p>
+    {% endif %}
+  </div>
+</section>
+
+{% setcontent othernews = 'news' where { id: "!#{news.id}" } limit 3 orderby 'datepublish' %}
+{% if othernews|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Other News</h2>
+    {% for article in othernews %}
+      <div class="border">
+        {% if article.image is not empty %}
+          <img src="{{ article.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ article.title|e }}">
+        {% endif %}
+        <h3>{{ article.headline|e }}</h3>
+        <p>{{ article.teaser|e }}</p>
+        <a href="{{ article.link }}" class="btn btn-outline">Read article</a>
+      </div>
+    {% endfor %}
+    {% if othernews|length == 3 %}
+      <div>
+        <a href="{{ othernews.link }}" class="btn btn-outline">View all</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

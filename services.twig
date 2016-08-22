@@ -1,0 +1,38 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% setcontent services = 'services' %}
+{% if services|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Services</h2>
+    {% for service in services %}
+      <div class="item">
+        <a href="{{ service.link }}" class="btn btn-outline"><h3>{{ service.title|e }}</h3></a>
+        <p><strong>{{ service.time|e|default('Various times') }}</strong></p>     
+        <p>
+          {% if (service.weeks is not empty) and (service.day is not empty) %}
+            <strong>{{ service.weeks|join(', ')|e }} {{ service.day|e }}</strong>
+            of month at
+          {% endif %}
+          <span class="newline">
+            {% set buildings = service.related('buildings') %}
+            {% if buildings|length > 0 %}
+              {% for building in buildings %}
+                <a href="{{ building.link }}">{{ building.name|e }}</a>
+              {% endfor %}
+            {% else %}
+              various locations
+            {% endif %}
+          </span>
+        </p>
+        <p>{{ service.teaser|e }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

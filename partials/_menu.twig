@@ -1,0 +1,138 @@
+{% setcontent about = 'pages' where { groups: 'about' } %}
+{% setcontent buildings = 'buildings' where { display: true } %}
+{% setcontent people = 'people' where { display: true } %}
+
+{% setcontent whatson = 'pages' where { groups: 'whats-on' } %}
+{% setcontent services = 'services' %}
+{% setcontent activities = 'activities' %}
+{% setcontent events = 'events' where { until: '>now' } orderby 'date' %}
+
+{% setcontent news = 'news' limit 3 orderby 'datepublish' %}
+
+{% setcontent resources = 'pages' where { groups: 'useful-stuff' } %}
+
+{% macro hyperlink(content, href, prependrootpath = false) %}
+{% if prependrootpath == true %}{% set url = "#{ paths.root }#{ href }" %}{% else %}{% set url = "#{ href }" %}{% endif %}
+{% set class %}{% if paths.current matches "/^(#{ url|replace({'/': '\\/'}) })\\/?((\?|#).*)*$/" %}class="current" {% elseif (paths.current matches "/^(#{ url|replace({'/': '\\/'}) }).*$/") and url != paths.root %}class="parent" {% endif %}{% endset %}
+<a {{ class|default('') }}href="{{ url }}">{{ content|e }}</a>{% endmacro %}
+
+{% import _self as html %}
+
+<ul>
+  <li>{{ html.hyperlink("Home","",true) }}</li>
+  <li>
+    {{ html.hyperlink("About Us","about",true) }}
+    {% if about|length > 0 %}
+      <ul>
+        {% for item in about %}
+          <li>{{ html.hyperlink(item.title, item.link) }}</li>
+        {% endfor %}
+        <li>
+          {{ html.hyperlink("Buildings","about/buildings",true) }}
+          {% if buildings|length > 0 %}
+            <ul>
+              {% for item in buildings %}
+                <li>{{ html.hyperlink(item.title, item.link) }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+        <li>
+          {{ html.hyperlink("People", "about/people", true) }}
+          {% if people|length > 0 %}
+            <ul>
+              {% for person in people %}
+                <li>{{ html.hyperlink("#{person.firstname} #{person.lastname} (#{person.role})", person.link) }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      </ul>
+    {% endif %}
+  </li>
+  <li>
+    {{ html.hyperlink("What's on", "whats-on", true) }}
+    <ul>
+      <li>
+        {{ html.hyperlink("Services", "whats-on/services", true) }}
+        {% if services|length > 0 %}
+          <ul>
+            {% for item in services %}
+              <li>{{ html.hyperlink(item.title, item.link) }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+      <li>
+        {{ html.hyperlink("Activities", "whats-on/activities", true) }}
+        {% if activities|length > 0 %}
+          <ul>
+            {% for item in activities %}
+              <li>{{ html.hyperlink(item.title, item.link) }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+      <li>
+        {{ html.hyperlink("Events", "whats-on/events", true) }}
+        {% if events|length > 0 %}
+          <ul>
+            {% for item in events %}
+              <li>{{ html.hyperlink(item.title, item.link) }}</li>
+            {% endfor %}
+            <li class="separate">{{ html.hyperlink("Past events", "whats-on/events#previous", true) }}</li>
+          </ul>
+        {% endif %}
+      </li>
+    </ul>
+    {% for item in whatson %}
+      <li>{{ html.hyperlink(item.title, item.link) }}</li>
+    {% endfor %}
+  </li>
+  <li>
+    {{ html.hyperlink("News", "news", true) }}
+    <ul>
+      <li class="separate">{{ html.hyperlink("View all", "news#all", true) }}</li>
+      {% if news|length > 0 %}
+        {% for item in news %}
+          <li>{{ html.hyperlink(item.title, item.link) }}</li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </li>
+  <li>
+    {{ html.hyperlink("Contact", "contact", true) }}
+  </li>
+  <li>
+    {{ html.hyperlink("Useful Stuff", "useful-stuff", true) }}
+    {% if resources|length > 0 %}
+      <ul>
+        {% for item in resources %}
+          <li>{{ html.hyperlink(item.title, item.link) }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </li>
+</ul>
+
+
+
+{#{% for item in menu %}
+    <li class="{{ item.class }}">
+        <a href="{{ item.link }}" {% if item|current %}class='active'{% endif %} {% if item.title is defined %}title='{{ item.title|escape }}'{% endif %}>
+          {{item.label}}
+        </a>
+        {% if item.submenu is defined %}
+            <ul>
+            {% for item in item.submenu %}
+                <li class="{{ item.class }}">
+                    <a href="{{ item.link }}" {% if item|current %}class='active'{% endif %} {% if item.title is defined %}title='{{ item.title|escape }}'{% endif %}>
+                      {{item.label}}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>#}

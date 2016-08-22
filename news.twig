@@ -1,0 +1,28 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% setcontent news = 'news' orderby '-datepublish' allowpaging %}
+{% if news|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Parish News</h2>
+    {% for article in news %}
+      <article>
+        <a class="border no-link" href="{{ article.link }}">
+          {% if article.image is not empty %}
+            <img src="{{ article.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ article.name|e }}">
+          {% endif %}
+          <h4>{{ article.headline|e }}</h4>
+          <p>{{ article.teaser }}</p>
+          <p><small>{{ article.datepublish|date("d/m/Y") }}</small></p>
+          <p class="link btn btn-outline">Read article</p>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

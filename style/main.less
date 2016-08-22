@@ -1,0 +1,830 @@
+@import 'https://fonts.googleapis.com/css?family=Lato:400,700';
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
+@primaryColor: #C056B8;
+@secondaryColor: #9CEE33;
+@hyperlinkColor: @primaryColor; //#98CDFF;
+
+@headerTypeface: 'Roboto', sans-serif;
+@bodyTypeface: 'Lato', sans-serif;
+@hyperlinkTypeface: @bodyTypeface;
+
+@headerBarBackground: @secondaryColor;
+@headerBarText: #000;
+
+@headerBackground: #fff;
+@headerText: #000;
+
+@mainBackground: #fff;
+@mainText: #000;
+@mainDividers: @primaryColor;
+@mainFontSize: 1.6rem;
+
+@footerBackground: #fff;
+@footerText: #000;
+
+
+*
+{
+  margin: 0;
+  padding: 0;
+  font-size:62.5%;
+}
+
+body
+{
+  font-family: @bodyTypeface;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+  padding-top: 2rem;
+  span
+  {
+    font-size: 0.6em;
+    color: lighten(@headerText, 50%);
+    display: block;
+  }
+}
+
+
+h1,
+h2
+{
+  font-family: @headerTypeface;
+  font-weight: normal;
+  font-size:5em;
+  font-size:5rem;
+}
+
+h2
+{
+  font-size: 3.8em;
+  font-size: 3.8rem;
+}
+
+h3,
+h4,
+h5,
+h6
+{
+  font-family: @headerTypeface;
+  font-weight: normal;
+  font-size: 1.8rem;
+}
+
+h3
+{
+  font-size: 2.4em;
+  font-size: 2.4rem;
+}
+
+h4
+{
+  font-size:2em;
+	font-size:2rem;
+}
+
+img
+{
+  max-width: 100%;
+  height: 100%;
+}
+
+a,
+.link
+{
+  text-decoration: none;
+  transition: all 0.15s ease-out;
+  color: @hyperlinkColor;
+
+  &.no-link
+  {
+    color: inherit;
+    transition: inherit;
+  }
+
+  &:hover.alt
+  {
+    text-decoration: underline;
+  }
+}
+
+li ul li
+{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+p,
+small,
+a,
+li
+{
+  font-family: @bodyTypeface;
+  font-size: 1em;
+  font-size: @mainFontSize;
+  line-height: 2.2rem;
+}
+
+label,
+input,
+textarea,
+button,
+select,
+option
+{
+  font-family: @bodyTypeface;
+  font-size: 1em;
+  font-size: @mainFontSize;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+label
+{
+  display: block;
+}
+
+input,
+textarea,
+button,
+select,
+option
+{
+  border: 2px @primaryColor solid;
+  outline: none;
+  margin-bottom: 1rem;
+
+  &:focus
+  {
+    box-shadow: 0 0 2rem @secondaryColor;
+  }
+}
+
+select
+{
+  background: transparent;
+  border: 2px @primaryColor solid;
+  height: 4rem;
+  text-indent: 1rem;
+  cursor: pointer;
+}
+
+input[submit],
+button
+{
+  background: transparent;
+  border: 5px @secondaryColor solid;
+  width: auto;
+  padding: 1rem 2rem;
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+
+  &:hover
+  {
+    background-color: @secondaryColor;
+    color: #fff;
+  }
+}
+
+span
+{
+  font-size: 1em;
+
+  &.newline
+  {
+    display: block;
+  }
+}
+
+hr
+{
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+form
+{
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+textarea
+{
+  height: 20rem;
+}
+
+small
+{
+  color: #b2b2b2;
+}
+
+pre,
+strong,
+em
+{
+  font-size:1.4em;
+  font-size:1.4rem;
+}
+
+.btn,
+{
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  color: @mainText;
+
+  &:first-child *
+  {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  &-outline
+  {
+    border: 5px @secondaryColor solid;
+
+    &:hover
+    {
+      background-color: @secondaryColor;
+      color: #fff;
+    }
+  }
+}
+
+.center
+{
+  text-align: center;
+}
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Header
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+header
+{
+  color: @headerText;
+  background-color: @headerBackground;
+
+
+  .logo 
+  {
+    max-width: 960px;
+    margin: 0 auto;
+    a
+    {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      max-width: 15rem;
+  }
+  }
+
+  a
+  {
+    color: #fff;
+  }
+
+  .header-top
+  {
+    background-color: @headerBarBackground;
+    color: @headerBarText;
+    padding: 10px;
+
+    ul
+    {
+      display: block;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    *
+    {
+      display: inline-block;
+    }
+
+    a
+    {
+      color: @headerBarText;
+      text-decoration: none;
+      padding: 0.6rem 2rem;
+
+      &:hover
+      {
+        text-decoration: underline;
+      }
+    }
+
+    .service-times
+    {
+      h3
+      {
+        width: 1.5rem;
+        height: 1.5rem;
+        text-indent: -9999px;
+        background-image: url(clock.svg);
+        background-size: 1.5rem 1.5rem;
+      }
+    }
+
+    .location
+    {
+      h3
+      {
+        width: 1.5rem;
+        height: 1.5rem;
+        text-indent: -9999px;
+        background-image: url(map-point.svg);
+        background-size: 1.5rem 1.5rem;
+      }
+    }
+  }
+
+  nav 
+  {
+    background-color: @primaryColor;
+
+    > ul
+    {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    ul li
+    {
+      display: block;
+      text-transform: uppercase;
+
+      &:hover
+      {
+        background-color: lighten(@primaryColor, 20%);
+      }
+
+      a
+      {
+        display: block;
+        padding: 1.6rem 2.2rem;
+        font-family: @hyperlinkTypeface;
+        line-height: 1.8rem;
+      }
+
+      ul 
+      {
+          display: none;
+          background-color: @primaryColor;
+
+          li
+          {
+            //padding-left: 15px;
+          }
+      }
+
+      > ul a:hover + ul,
+      > ul ul:hover
+      {
+        display: block;
+      }
+    }
+
+    &::after
+    {
+      display: block;
+      content: '';
+      height: 5rem;
+      width: 100%;
+      background-color: @primaryColor;
+    }
+  }
+
+
+  .info-banner
+  {
+    background-color: #8A1919;
+
+    h3
+    {
+      margin: 0 auto;
+      padding: 2rem;
+    }
+  }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Sections
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+main
+{
+  section
+  {
+    //padding: 3rem 0;
+    background-color: @mainBackground;
+    color: @mainText;
+
+    &:not(:first-child)::before
+    {
+      display: block;
+      padding: 0;
+      margin: 0;
+      content: '';
+      height: 20px;
+      background-color: @mainDividers;
+    }
+
+    a,
+    .link
+    {
+      cursor: pointer;
+    }
+
+    &:hover a.highlight
+    {
+      color: #98CDFF;
+    }
+
+    &.image
+    {
+      background-color: #7086A4;
+    }
+
+    h2
+    {
+      padding: 1rem 0.5rem 0;
+    }
+
+    h3
+    {
+      padding: 2rem 0.5rem 0;
+    }
+
+    h4,
+    h5,
+    h6
+    {
+      padding: 2rem 0.5rem 0;
+    }
+
+    .text
+    {
+      p
+      {
+        padding-top: 1rem;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      ul,
+      ol
+      {
+        text-align: left;
+      }
+    }
+    
+    pre
+    {
+      padding-top: 1rem;
+    }
+
+    ul,
+    ol
+    {
+      //list-style: none;
+      padding: 2rem;
+    }
+
+    > div
+    {
+      padding: 3rem 1.2rem 5rem;
+      text-align: center;
+      max-width: 960px;
+      margin: 0 auto;
+      overflow: auto;
+      vertical-align: top;
+
+      &:first-child > .title,
+      {
+        margin-bottom: 3rem;
+      }
+
+      div
+      {
+        vertical-align: top;
+        display: block;
+      }
+
+      .border
+      {
+        margin: auto 0.6rem 1.5rem;
+        vertical-align: top;
+        border: 0.5rem @primaryColor solid;
+        padding: 2rem 2rem 2.5rem;
+        
+        p
+        {
+          text-align: center;
+        }
+      }
+
+      .item
+      {
+        padding: 20px;
+      }
+
+      > a
+      {
+        display: block;
+      }
+    }
+
+    .highlighted
+    {
+      margin-top: 2rem;
+      border: 0.2rem solid @primaryColor;
+      padding: 2rem;
+      font-size: @mainFontSize;
+    }
+
+    #map
+    {
+      height: 40rem;
+    }
+
+    .vision
+    {
+      border: 10px @secondaryColor solid;
+
+      p
+      {
+        font-size: 2em;
+        font-size: 2rem;
+      }
+    }
+
+    .postal-address
+    {
+      font-family: @bodyTypeface;
+      padding: 10px;
+    }
+    
+    .footer
+    {
+      margin-top: 15px;
+      display: inline-block;
+    }
+  }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Footer
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+footer
+{
+  //padding: 20px;
+  background-color: @footerBackground;
+  color: @footerText;
+  text-align: center;
+
+  div
+  {
+    padding: 20px;
+  }
+
+  &:not(:first-child)::before
+  {
+    display: block;
+    padding: 0;
+    margin: 0;
+    content: '';
+    height: 20px;
+    background-color: @mainDividers;
+  }
+
+  h2
+  {
+    padding: 0 0 20px 0;
+  }
+  
+  a,
+  .link
+  {
+    
+    &:hover:not(.no-highlight)
+    {
+      text-decoration: underline;
+    }
+  }
+
+  .developer
+  {
+    float: right;
+  }
+}
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Media Queries
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@media (min-width: 480px)
+{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+  {
+    span
+    {
+      display: inline;
+    }
+  }
+
+  h1,
+  h2
+  {
+    text-transform: none;
+  }
+
+
+  h3,
+  h4,
+  h5,
+  h6
+  {
+    // something
+  }
+
+  main section
+  {
+    > div
+    {
+      .item,
+      .border
+      {
+        max-width: 33%;
+        display: inline-block;
+      }
+
+      .content
+      {
+        padding: 2rem;
+        float: right;
+      }
+    }
+  }
+}
+
+@media (min-width: 720px)
+{
+
+  main section
+  {
+    h2, h3, h4, h5, h6
+    {
+      padding-top: 2rem;
+    }
+
+    > div
+    {
+      padding: 1.5rem 2rem 4rem;
+
+      .item,
+      .border
+      {
+        max-width: 24%;
+      }
+
+      .news-article
+      {
+        //column-count: 2;
+      }
+
+      .right
+      {
+        float: right;
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  header
+  {
+    .logo
+    {
+      a
+      {
+        width: 15rem;
+        display: inline-block;
+      }
+
+      h1
+      {
+        display: inline-block;
+        width: 60%;
+      }
+    }
+
+    nav
+    {
+      background-color: transparent;
+
+      > ul > li > .parent + ul,
+      > ul > li > .current + ul,
+      {
+        display: block;
+      }
+
+      .current
+      {
+        cursor: default;
+      }
+
+      ul
+      {
+        li
+        {
+          display: block;
+          vertical-align: top;
+
+          ul li
+          {
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+      }
+
+      > ul // top level
+      {
+
+        .parent
+        {
+          background-color: darken(@primaryColor, 10%);
+          color: #fff;
+        }
+
+        > li
+        {
+          display: inline-block;
+
+          > a
+          {
+            color: @mainText;
+
+            &.parent
+            {
+              background-color: @primaryColor;
+            }
+
+            &.current
+            {
+              background-color: @primaryColor;
+              color: #fff;
+            }
+          }
+
+          > ul // second level
+          {
+            position: absolute;
+            margin-left:-8rem;
+
+            > li
+            {
+              display: inline-block;
+
+              ul // third+ levels
+              {
+                position: absolute;
+                max-width: 20rem;
+              }
+
+              a.current
+              {
+                background-color: darken(@primaryColor, 10%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

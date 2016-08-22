@@ -1,0 +1,25 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+{% setcontent people = 'people' where { show: true } %}
+{% if people|length > 0 %}
+<section>
+  <div>
+    <h2 class="title">Our People</h2>
+    {% for person in people %}
+      <a class="border" href="{{ person.link }}">
+        {% if person.image is not empty %}
+          <img src="{{ person.image|thumbnail(200,200) }}" width="200" height="200" alt="{{ person.name|e }}">
+        {% endif %}
+        <h4>{{ person.firstname|e }} {{ person.lastname|e }}</h4>
+        <h5>({{ person.role|e }})</h5>
+        <p class="link btn btn-outline">More info</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

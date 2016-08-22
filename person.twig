@@ -1,0 +1,28 @@
+{% extends 'partials/_master.twig' %}
+
+{% block content %}
+
+<section>
+  <div>
+    <h2 class="title"><span>{{ person.titles|e }}</span> {{ person.firstname|e }} {{ person.lastname|e }} <span>({{ person.role|e }})</span></h2>
+    {% if person.image is not empty %}
+      <img class="right" src="{{ person.image|image(300,330) }}" width="300" height="330" alt="{{ person.name|e }}">
+    {% endif %}
+    <div class="text">
+      {{ person.about }}
+    </div>
+  </div>
+</section>
+
+{% if person.role_explanation != "" %}
+<section>
+  <div>
+    <h3>What is a {{ person.role|e }}?</h3>
+    <div class="text">
+      <p>{{ person.role_explanation|e }}</p>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock content %}

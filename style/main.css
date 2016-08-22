@@ -1,0 +1,520 @@
+@import 'https://fonts.googleapis.com/css?family=Lato:400,700';
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Lato', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-top: 2rem;
+}
+h1 span,
+h2 span,
+h3 span,
+h4 span,
+h5 span,
+h6 span {
+  font-size: 0.6em;
+  color: #808080;
+  display: block;
+}
+h1,
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 5em;
+  font-size: 5rem;
+}
+h2 {
+  font-size: 3.8em;
+  font-size: 3.8rem;
+}
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 1.8rem;
+}
+h3 {
+  font-size: 2.4em;
+  font-size: 2.4rem;
+}
+h4 {
+  font-size: 2em;
+  font-size: 2rem;
+}
+img {
+  max-width: 100%;
+  height: 100%;
+}
+a,
+.link {
+  text-decoration: none;
+  transition: all 0.15s ease-out;
+  color: #C056B8;
+}
+a.no-link,
+.link.no-link {
+  color: inherit;
+  transition: inherit;
+}
+a:hover.alt,
+.link:hover.alt {
+  text-decoration: underline;
+}
+li ul li {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+p,
+small,
+a,
+li {
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+}
+label,
+input,
+textarea,
+button,
+select,
+option {
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  font-size: 1.6rem;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+}
+label {
+  display: block;
+}
+input,
+textarea,
+button,
+select,
+option {
+  border: 2px #C056B8 solid;
+  outline: none;
+  margin-bottom: 1rem;
+}
+input:focus,
+textarea:focus,
+button:focus,
+select:focus,
+option:focus {
+  box-shadow: 0 0 2rem #9CEE33;
+}
+select {
+  background: transparent;
+  border: 2px #C056B8 solid;
+  height: 4rem;
+  text-indent: 1rem;
+  cursor: pointer;
+}
+input[submit],
+button {
+  background: transparent;
+  border: 5px #9CEE33 solid;
+  width: auto;
+  padding: 1rem 2rem;
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+}
+input[submit]:hover,
+button:hover {
+  background-color: #9CEE33;
+  color: #fff;
+}
+span {
+  font-size: 1em;
+}
+span.newline {
+  display: block;
+}
+hr {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+form {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+textarea {
+  height: 20rem;
+}
+small {
+  color: #b2b2b2;
+}
+pre,
+strong,
+em {
+  font-size: 1.4em;
+  font-size: 1.4rem;
+}
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  color: #000;
+}
+.btn:first-child * {
+  margin-top: 0;
+  padding-top: 0;
+}
+.btn-outline {
+  border: 5px #9CEE33 solid;
+}
+.btn-outline:hover {
+  background-color: #9CEE33;
+  color: #fff;
+}
+.center {
+  text-align: center;
+}
+header {
+  color: #000;
+  background-color: #fff;
+}
+header .logo {
+  max-width: 960px;
+  margin: 0 auto;
+}
+header .logo a {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  max-width: 15rem;
+}
+header a {
+  color: #fff;
+}
+header .header-top {
+  background-color: #9CEE33;
+  color: #000;
+  padding: 10px;
+}
+header .header-top ul {
+  display: block;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+header .header-top * {
+  display: inline-block;
+}
+header .header-top a {
+  color: #000;
+  text-decoration: none;
+  padding: 0.6rem 2rem;
+}
+header .header-top a:hover {
+  text-decoration: underline;
+}
+header .header-top .service-times h3 {
+  width: 1.5rem;
+  height: 1.5rem;
+  text-indent: -9999px;
+  background-image: url(clock.svg);
+  background-size: 1.5rem 1.5rem;
+}
+header .header-top .location h3 {
+  width: 1.5rem;
+  height: 1.5rem;
+  text-indent: -9999px;
+  background-image: url(map-point.svg);
+  background-size: 1.5rem 1.5rem;
+}
+header nav {
+  background-color: #C056B8;
+}
+header nav > ul {
+  max-width: 960px;
+  margin: 0 auto;
+}
+header nav ul li {
+  display: block;
+  text-transform: uppercase;
+}
+header nav ul li:hover {
+  background-color: #dca0d7;
+}
+header nav ul li a {
+  display: block;
+  padding: 1.6rem 2.2rem;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.8rem;
+}
+header nav ul li ul {
+  display: none;
+  background-color: #C056B8;
+}
+header nav ul li > ul a:hover + ul,
+header nav ul li > ul ul:hover {
+  display: block;
+}
+header nav::after {
+  display: block;
+  content: '';
+  height: 5rem;
+  width: 100%;
+  background-color: #C056B8;
+}
+header .info-banner {
+  background-color: #8A1919;
+}
+header .info-banner h3 {
+  margin: 0 auto;
+  padding: 2rem;
+}
+main section {
+  background-color: #fff;
+  color: #000;
+}
+main section:not(:first-child)::before {
+  display: block;
+  padding: 0;
+  margin: 0;
+  content: '';
+  height: 20px;
+  background-color: #C056B8;
+}
+main section a,
+main section .link {
+  cursor: pointer;
+}
+main section:hover a.highlight {
+  color: #98CDFF;
+}
+main section.image {
+  background-color: #7086A4;
+}
+main section h2 {
+  padding: 1rem 0.5rem 0;
+}
+main section h3 {
+  padding: 2rem 0.5rem 0;
+}
+main section h4,
+main section h5,
+main section h6 {
+  padding: 2rem 0.5rem 0;
+}
+main section .text p {
+  padding-top: 1rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+main section .text ul,
+main section .text ol {
+  text-align: left;
+}
+main section pre {
+  padding-top: 1rem;
+}
+main section ul,
+main section ol {
+  padding: 2rem;
+}
+main section > div {
+  padding: 3rem 1.2rem 5rem;
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: auto;
+  vertical-align: top;
+}
+main section > div:first-child > .title {
+  margin-bottom: 3rem;
+}
+main section > div div {
+  vertical-align: top;
+  display: block;
+}
+main section > div .border {
+  margin: auto 0.6rem 1.5rem;
+  vertical-align: top;
+  border: 0.5rem #C056B8 solid;
+  padding: 2rem 2rem 2.5rem;
+}
+main section > div .border p {
+  text-align: center;
+}
+main section > div .item {
+  padding: 20px;
+}
+main section > div > a {
+  display: block;
+}
+main section .highlighted {
+  margin-top: 2rem;
+  border: 0.2rem solid #C056B8;
+  padding: 2rem;
+  font-size: 1.6rem;
+}
+main section #map {
+  height: 40rem;
+}
+main section .vision {
+  border: 10px #9CEE33 solid;
+}
+main section .vision p {
+  font-size: 2em;
+  font-size: 2rem;
+}
+main section .postal-address {
+  font-family: 'Lato', sans-serif;
+  padding: 10px;
+}
+main section .footer {
+  margin-top: 15px;
+  display: inline-block;
+}
+footer {
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+}
+footer div {
+  padding: 20px;
+}
+footer:not(:first-child)::before {
+  display: block;
+  padding: 0;
+  margin: 0;
+  content: '';
+  height: 20px;
+  background-color: #C056B8;
+}
+footer h2 {
+  padding: 0 0 20px 0;
+}
+footer a:hover:not(.no-highlight),
+footer .link:hover:not(.no-highlight) {
+  text-decoration: underline;
+}
+footer .developer {
+  float: right;
+}
+@media (min-width: 480px) {
+  h1 span,
+  h2 span,
+  h3 span,
+  h4 span,
+  h5 span,
+  h6 span {
+    display: inline;
+  }
+  h1,
+  h2 {
+    text-transform: none;
+  }
+  main section > div .item,
+  main section > div .border {
+    max-width: 33%;
+    display: inline-block;
+  }
+  main section > div .content {
+    padding: 2rem;
+    float: right;
+  }
+}
+@media (min-width: 720px) {
+  main section h2,
+  main section h3,
+  main section h4,
+  main section h5,
+  main section h6 {
+    padding-top: 2rem;
+  }
+  main section > div {
+    padding: 1.5rem 2rem 4rem;
+  }
+  main section > div .item,
+  main section > div .border {
+    max-width: 24%;
+  }
+  main section > div .right {
+    float: right;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+  }
+  header .logo a {
+    width: 15rem;
+    display: inline-block;
+  }
+  header .logo h1 {
+    display: inline-block;
+    width: 60%;
+  }
+  header nav {
+    background-color: transparent;
+  }
+  header nav > ul > li > .parent + ul,
+  header nav > ul > li > .current + ul {
+    display: block;
+  }
+  header nav .current {
+    cursor: default;
+  }
+  header nav ul li {
+    display: block;
+    vertical-align: top;
+  }
+  header nav ul li ul li {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  header nav > ul .parent {
+    background-color: #a53e9e;
+    color: #fff;
+  }
+  header nav > ul > li {
+    display: inline-block;
+  }
+  header nav > ul > li > a {
+    color: #000;
+  }
+  header nav > ul > li > a.parent {
+    background-color: #C056B8;
+  }
+  header nav > ul > li > a.current {
+    background-color: #C056B8;
+    color: #fff;
+  }
+  header nav > ul > li > ul {
+    position: absolute;
+    margin-left: -8rem;
+  }
+  header nav > ul > li > ul > li {
+    display: inline-block;
+  }
+  header nav > ul > li > ul > li ul {
+    position: absolute;
+    max-width: 20rem;
+  }
+  header nav > ul > li > ul > li a.current {
+    background-color: #a53e9e;
+  }
+}
