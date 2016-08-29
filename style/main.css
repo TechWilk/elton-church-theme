@@ -30,8 +30,8 @@ h1,
 h2 {
   font-family: 'Roboto', sans-serif;
   font-weight: normal;
-  font-size: 5em;
-  font-size: 5rem;
+  font-size: 4.5em;
+  font-size: 4.5rem;
 }
 h2 {
   font-size: 3.8em;
@@ -82,7 +82,7 @@ a,
 li {
   font-family: 'Lato', sans-serif;
   font-size: 1em;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   line-height: 2.2rem;
 }
 label,
@@ -93,7 +93,7 @@ select,
 option {
   font-family: 'Lato', sans-serif;
   font-size: 1em;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   padding: 10px;
   width: 100%;
   text-align: center;
@@ -169,7 +169,7 @@ pre,
 strong,
 em {
   font-size: 1.4em;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 .btn {
   display: inline-block;
@@ -206,6 +206,16 @@ header .logo a {
   padding: 15px;
   text-decoration: none;
   max-width: 15rem;
+}
+header .logo h1 {
+  text-align: center;
+  vertical-align: top;
+}
+header .logo h1 ul li {
+  font-size: 1em;
+  font-size: 4rem;
+  padding-right: 3rem;
+  line-height: normal;
 }
 header a {
   color: #fff;
@@ -327,7 +337,12 @@ main section .text p {
   text-justify: inter-word;
 }
 main section .text ul,
-main section .text ol {
+main section .text ol,
+main section .text h3,
+main section .text h4,
+main section .text h5,
+main section .text h6,
+main section .text pre {
   text-align: left;
 }
 main section pre {
@@ -371,7 +386,7 @@ main section .highlighted {
   margin-top: 2rem;
   border: 0.2rem solid #C056B8;
   padding: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 main section #map {
   height: 40rem;
@@ -440,6 +455,17 @@ footer .developer {
     float: right;
   }
 }
+@media (min-width: 564px) {
+  header .logo a {
+    width: 15rem;
+    display: inline-block;
+  }
+  header .logo h1 {
+    display: inline-block;
+    padding-top: 2rem;
+    width: 65%;
+  }
+}
 @media (min-width: 720px) {
   main section h2,
   main section h3,
@@ -460,13 +486,11 @@ footer .developer {
     margin-left: 2rem;
     margin-bottom: 2rem;
   }
-  header .logo a {
-    width: 15rem;
-    display: inline-block;
-  }
   header .logo h1 {
+    width: 74%;
+  }
+  header .logo h1 ul li {
     display: inline-block;
-    width: 60%;
   }
   header nav {
     background-color: transparent;
@@ -516,5 +540,19 @@ footer .developer {
   }
   header nav > ul > li > ul > li a.current {
     background-color: #a53e9e;
+  }
+}
+@media (min-width: 720px) {
+  header .logo h1 {
+    padding-top: 3.5rem;
+  }
+}
+@media (min-width: 900px) {
+  header .logo h1 {
+    display: inline-block;
+    width: 79%;
+  }
+  header .logo h1 ul li {
+    list-style: inside circle;
   }
 }
