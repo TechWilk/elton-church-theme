@@ -16,14 +16,14 @@
     {% set next = record.next('id') %}
     {% if previous or next %}
         <p>
-            {% if previous %}
-                <a href="{{ previous.link }}">&laquo; {{ previous.headline|e }}</a>
+            {% if next %}
+                <a href="{{ next.link }}">&laquo; {{ next.headline|e }}</a>
             {% endif %}
             {% if previous and next %}
             -
             {% endif %}
-            {% if next %}
-                <a href="{{ next.link }}">{{ next.headline|e }} &raquo;</a>
+            {% if previous %}
+                <a href="{{ previous.link }}">{{ previous.headline|e }} &raquo;</a>
             {% endif %}
         </p>
     {% endif %}
