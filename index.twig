@@ -84,7 +84,7 @@
 </section>
 {% endif %}
 
-{% setcontent news = 'news' limit 3 orderby 'datepublish' %}
+{% setcontent news = 'news' limit 3 orderby '-datepublish' %}
 {% if news|length > 0 %}
 <section>
   <div>

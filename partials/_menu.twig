@@ -7,7 +7,7 @@
 {% setcontent activities = 'activities' %}
 {% setcontent events = 'events' where { until: '>now' } orderby 'date' %}
 
-{% setcontent news = 'news' limit 3 orderby 'datepublish' %}
+{% setcontent news = 'news' limit 3 orderby '-datepublish' %}
 
 {% setcontent resources = 'pages' where { groups: 'useful-stuff' } %}
 
@@ -95,7 +95,11 @@
       <li class="separate">{{ html.hyperlink("View all", "news#all", true) }}</li>
       {% if news|length > 0 %}
         {% for item in news %}
-          <li>{{ html.hyperlink(item.title, item.link) }}</li>
+          {% if item.title|length > 22 %}
+            <li>{{ html.hyperlink(item.title|slice(0,22) ~ "...", item.link) }}</li>
+          {% else %}
+            <li>{{ html.hyperlink(item.title, item.link) }}</li>
+          {% endif %}
         {% endfor %}
       {% endif %}
     </ul>
