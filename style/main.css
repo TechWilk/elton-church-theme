@@ -311,11 +311,11 @@ main section:hover a.highlight {
 }
 main section.image {
   background-color: #7086A4;
-  min-height: 40rem;
+  min-height: 30rem;
   padding: 2rem 2rem;
 }
 main section.image > div {
-  margin: 18rem auto;
+  margin: 3.5rem auto;
 }
 main section h2 {
   padding: 1rem 0.5rem 0;
@@ -478,6 +478,9 @@ footer .developer {
   main section h5,
   main section h6 {
     padding-top: 2rem;
+  }
+  main section.image > div {
+    margin: 18rem auto;
   }
   main section > div {
     padding: 1.5rem 2rem 4rem;
