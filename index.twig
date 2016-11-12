@@ -1,7 +1,9 @@
 {% extends 'partials/_master.twig' %}
 
 {% block content %}
-<section>
+
+{% set bannerimage = paths.theme ~ 'images/' ~ random(theme.homepagebanner) %}
+<section class="image" style='background-image: url({{ bannerimage }}); background-position: center; background-size: cover;'>
   <div class="vision">
     <p>Working together to share God's love in the community</p>
   </div>

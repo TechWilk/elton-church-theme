@@ -1,0 +1,7 @@
+# config file for the theme.
+
+# Setting the header image. The default images in this theme all came from
+# Visualhunt: https://visualhunt.com/
+homepagebanner:
+# - 01.jpg
+ - 02.jpg
