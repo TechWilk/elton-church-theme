@@ -1,8 +1,16 @@
 <div class="header-top">
-  <ul>
-    <li><a href="tel:{{ '01928724028' }}">{{ '01928 724028'|e }}</a></li>
-    <li><a href="mailto:{{ 'info@thornton-le-moors-ince-elton.org.uk' }}">{{ 'info@thornton-le-moors-ince-elton.org.uk'|e }}</a></li>
-  </ul>
+  <div class="telephone">
+    <h3 style="background-image: url({{ paths.theme ~ 'images/icons/phone.svg' }})">Telephone</h3>
+    <a href="tel:{{ '01928724028' }}">{{ '01928 724028'|e }}</a>
+  </div>
+  <div class="email">
+    <h3 style="background-image: url({{ paths.theme ~ 'images/icons/email.svg' }})">Email</h3>
+    <a href="mailto:{{ 'info@thornton-le-moors-ince-elton.org.uk' }}">{{ 'info@thornton-le-moors-ince-elton.org.uk'|e }}</a>
+  </div>
+  <div class="facebook">
+    <h3 style="background-image: url({{ paths.theme ~ 'images/icons/facebook.svg' }})">Facebook</h3>
+    <a href="{{ 'https://www.facebook.com/StJamesTheGreatInce' }}">{{ 'Find us on Facebook'|e }}</a>
+  </div>
 </div>
 <div class="logo">
   <a href="{{ paths.root }}">
