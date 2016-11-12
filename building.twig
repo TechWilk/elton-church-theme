@@ -16,14 +16,14 @@
 
 {% set services = building.related('services') %}
 {% set events = building.related('events') %}
-{% setcontent Activities = 'Activities' %}
-{% set Activitiesexist = false %}
+{% setcontent activities = 'activities' %}
+{% set activitiesexist = false %}
 
 {# Check if any Activities exist at building #}
-{% for item in Activities %}
+{% for item in activities %}
   {% for meeting in item.meetings %}
     {% if meeting.get('location') == building.id %}
-      {% set Activitiesexist = true %}
+      {% set activitiesexist = true %}
     {% endif %}
   {% endfor %}
 {% endfor %}
@@ -37,9 +37,9 @@
         <a class="btn btn-outline" href="{{ item.link }}">{{ item.title }}</a>
       {% endfor %}
     {% endif %}
-    {% if Activitiesexist %}
+    {% if activitiesexist %}
       <h4>Activities</h4>
-      {% for item in Activities %}
+      {% for item in activities %}
         {% for meeting in item.meetings %}
           {% if meeting.get('location') == building.id %}
             <a class="btn btn-outline" href="{{ item.link }}">{{ item.title }}</a>
