@@ -83,6 +83,21 @@
     <div class="text">
       {{ building.facilities }}
     </div>
+    <div class="images">
+      {% for key, image in building.gallery %}
+        <a href="#img{{ key }}">
+          <img src="{{ image|thumbnail(160, 120, 'c') }}" width="160" height="120" alt="{{ image.title }}" />
+        </a>
+        <a href="#_" class="lightbox" id="img{{ key }}">
+          <figure>
+            <img src="{{ image|thumbnail(1000, 750, 'r') }}" width="1000" height="750" alt="{{ image.title }}" />
+            <figcaption>
+              {{ image.title }}
+            </figcaption>
+          </figure>
+        </a>
+      {% endfor %}
+    </div>
   </div>
 </section>
 {% endif %}

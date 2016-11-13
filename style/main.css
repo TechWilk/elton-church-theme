@@ -407,6 +407,38 @@ main section .footer {
   margin-top: 15px;
   display: inline-block;
 }
+main section .lightbox {
+  /** Default lightbox to hidden */
+  display: none;
+  /** Position and style */
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+main section .lightbox img {
+  /** Pad the lightbox image */
+  max-width: 90%;
+  max-height: 80%;
+  height: auto;
+  margin-top: 2%;
+}
+main section .lightbox figcaption {
+  font-size: 2rem;
+  color: #fff;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.8);
+}
+main section .lightbox:target {
+  /** Remove default browser outline */
+  outline: none;
+  /** Unhide lightbox **/
+  display: block;
+}
 footer {
   background-color: #fff;
   color: #000;
