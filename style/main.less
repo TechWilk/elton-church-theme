@@ -618,18 +618,25 @@ main
       background: rgba(0,0,0,0.8);
     }
 
-    .lightbox img {
+    .lightbox figure {
       /** Pad the lightbox image */
       max-width: 90%;
       max-height: 80%;
-      height: auto;
-      margin-top: 2%;
+      width: auto;
+      display: inline-block;
+
+      img
+      {
+        height: auto;
+        margin-top: 2%;
+      }
     }
+
     .lightbox figcaption {
       font-size: 2rem;
       color: #fff;
       padding: 1.5rem;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.7);
     }
 
     .lightbox:target {

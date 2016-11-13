@@ -83,6 +83,7 @@
     <div class="text">
       {{ building.facilities }}
     </div>
+    {% if building.gallery|length > 0 %}
     <div class="images">
       {% for key, image in building.gallery %}
         <a href="#img{{ key }}">
@@ -98,6 +99,7 @@
         </a>
       {% endfor %}
     </div>
+    {% endif %}
   </div>
 </section>
 {% endif %}

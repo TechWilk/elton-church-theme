@@ -420,10 +420,14 @@ main section .lightbox {
   left: 0;
   background: rgba(0, 0, 0, 0.8);
 }
-main section .lightbox img {
+main section .lightbox figure {
   /** Pad the lightbox image */
   max-width: 90%;
   max-height: 80%;
+  width: auto;
+  display: inline-block;
+}
+main section .lightbox figure img {
   height: auto;
   margin-top: 2%;
 }
@@ -431,7 +435,7 @@ main section .lightbox figcaption {
   font-size: 2rem;
   color: #fff;
   padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
 }
 main section .lightbox:target {
   /** Remove default browser outline */
