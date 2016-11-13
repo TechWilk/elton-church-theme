@@ -616,35 +616,35 @@ main
       top: 0;
       left: 0;
       background: rgba(0,0,0,0.8);
-    }
+    
+      figure {
+        /** Pad the lightbox image */
+        max-width: 90%;
+        max-height: 80%;
+        width: auto;
+        display: inline-block;
 
-    .lightbox figure {
-      /** Pad the lightbox image */
-      max-width: 90%;
-      max-height: 80%;
-      width: auto;
-      display: inline-block;
-
-      img
-      {
-        height: auto;
-        margin-top: 2%;
+        img
+        {
+          height: auto;
+          margin-top: 2%;
+        }
       }
-    }
+      
+      figcaption {
+        font-size: 2rem;
+        color: #fff;
+        padding: 1.5rem;
+        background: rgba(0,0,0,0.7);
+      }
 
-    .lightbox figcaption {
-      font-size: 2rem;
-      color: #fff;
-      padding: 1.5rem;
-      background: rgba(0,0,0,0.7);
-    }
+      &:target {
+        /** Remove default browser outline */
+        outline: none;
 
-    .lightbox:target {
-      /** Remove default browser outline */
-      outline: none;
-
-      /** Unhide lightbox **/
-      display: block;
+        /** Unhide lightbox **/
+        display: block;
+      }
     }
   }
 }
