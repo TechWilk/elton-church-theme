@@ -354,9 +354,60 @@ header
     }
   }
 
+  .hamburger
+  {
+    display: none; // shown in media query (max-width: 720px)
+    position:relative;
+    margin:0 auto 2rem;
+    height:50px;
+    width:50px;
+
+    * {
+      transition:all 0.3s;
+      -webkit-transition:all 0.3s;
+      box-sizing:border-box;
+    }
+
+    input[type=checkbox]
+    {
+      display:none;
+    }
+
+    label
+    {
+      cursor:pointer;
+      position:absolute;
+      z-index:99;
+      height:100%;
+      width:100%;
+      top:10px;
+      left:0;
+    }
+
+    .spinner4
+    {
+      position:absolute;
+      height:5px;
+      width:100%;
+      background-color:@primaryColor;
+    }
+
+    .diagonal.part-1 {position:relative;float:left;}
+    .horizontal {position:relative;float:left;margin-top:6px;}
+    .diagonal.part-2 {position:relative;float:left;margin-top:6px;}
+
+    input[type=checkbox]:checked ~ .spinner-spin4 > .horizontal {transform:translate(-100px, 0px);-webkit-transform:translate(-100px, 0px); opacity: 0;}
+    input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-1 {transform:rotate(-135deg);-webkit-transform:rotate(-135deg);margin-top:10px;}
+    input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-2 {transform:rotate(135deg);-webkit-transform:rotate(135deg);margin-top:-16px;}
+    input[type=checkbox]:checked ~ nav {display:none;}
+  }
+
   nav 
   {
     background-color: @primaryColor;
+    -webkit-transition: all .5s ease;
+       -moz-transition: all .5s ease;
+            transition: all .5s ease;
 
     > ul
     {
@@ -703,6 +754,35 @@ footer
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Media Queries
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// setup mobile menu
+@media (max-width: 720px)
+{
+  header
+  {
+    .hamburger
+    {
+      display: block;
+    }
+
+    nav
+    {
+      height: 0;
+      overflow: hidden;
+      
+      &:not(.visible) * {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      
+      &.visible {
+        height: auto;
+        //padding: 24px 18px;
+      }
+    }
+  }
+}
+
 
 @media (min-width: 480px)
 {

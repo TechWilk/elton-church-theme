@@ -24,6 +24,21 @@
     </ul>
   </h1>
 </div>
+<div class="hamburger">
+  <input id="spinner-form4" type="checkbox" />
+  <label class="spinner-spin4" for="spinner-form4">
+    <div class="spinner4 diagonal part-1"></div>
+    <div class="spinner4 horizontal"></div>
+    <div class="spinner4 diagonal part-2"></div>
+  </label>
+</div>
 <nav>
   {{ menu('main', 'partials/_menu.twig') }}
 </nav>
+<script>
+  document.getElementById("spinner-form4").onchange = toggleMenu;
+
+  function toggleMenu(){
+    document.getElementsByTagName('nav')[0].classList.toggle("visible");
+  }
+</script>

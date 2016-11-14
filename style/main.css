@@ -248,8 +248,73 @@ header .header-top h3 {
   text-indent: -9999px;
   background-size: 2.4rem 2.4rem;
 }
+header .hamburger {
+  display: none;
+  position: relative;
+  margin: 0 auto 2rem;
+  height: 50px;
+  width: 50px;
+}
+header .hamburger * {
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  box-sizing: border-box;
+}
+header .hamburger input[type=checkbox] {
+  display: none;
+}
+header .hamburger label {
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 10px;
+  left: 0;
+}
+header .hamburger .spinner4 {
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background-color: #C056B8;
+}
+header .hamburger .diagonal.part-1 {
+  position: relative;
+  float: left;
+}
+header .hamburger .horizontal {
+  position: relative;
+  float: left;
+  margin-top: 6px;
+}
+header .hamburger .diagonal.part-2 {
+  position: relative;
+  float: left;
+  margin-top: 6px;
+}
+header .hamburger input[type=checkbox]:checked ~ .spinner-spin4 > .horizontal {
+  transform: translate(-100px, 0px);
+  -webkit-transform: translate(-100px, 0px);
+  opacity: 0;
+}
+header .hamburger input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-1 {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  margin-top: 10px;
+}
+header .hamburger input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-2 {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  margin-top: -16px;
+}
+header .hamburger input[type=checkbox]:checked ~ nav {
+  display: none;
+}
 header nav {
   background-color: #C056B8;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  transition: all .5s ease;
 }
 header nav > ul {
   max-width: 960px;
@@ -468,6 +533,22 @@ footer .link:hover:not(.no-highlight) {
 }
 footer .developer {
   float: right;
+}
+@media (max-width: 720px) {
+  header .hamburger {
+    display: block;
+  }
+  header nav {
+    height: 0;
+    overflow: hidden;
+  }
+  header nav:not(.visible) * {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  header nav.visible {
+    height: auto;
+  }
 }
 @media (min-width: 480px) {
   h1 span,
