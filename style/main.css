@@ -444,6 +444,13 @@ main section > div .item {
 main section > div > a {
   display: block;
 }
+main section .images {
+  margin-top: 4rem;
+}
+main section .images .image {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 main section .highlighted {
   margin-top: 2rem;
   border: 0.2rem solid #C056B8;
