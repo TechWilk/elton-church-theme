@@ -47,7 +47,7 @@
   </div>
 </section>
 
-{% setcontent othernews = 'news' where { id: "!#{news.id}" } limit 3 orderby 'datepublish' %}
+{% setcontent othernews = 'news' where { id: "!#{news.id}" } limit 3 orderby '-datepublish' %}
 {% if othernews|length > 0 %}
 <section>
   <div>
@@ -59,6 +59,7 @@
         {% endif %}
         <h3>{{ article.headline|e }}</h3>
         <p>{{ article.teaser|e }}</p>
+        <p><small>{{ article.datepublish|date('jS M Y') }}</small></p>
         <a href="{{ article.link }}" class="btn btn-outline">Read article</a>
       </div>
     {% endfor %}
