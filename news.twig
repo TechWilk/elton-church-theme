@@ -14,7 +14,7 @@
         {% endif %}
         <h4>{{ article.headline|e }}</h4>
         <p>{{ article.teaser }}</p>
-        <p><small>{{ article.datepublish|date("d/m/Y") }}</small></p>
+        <p><small>{{ article.datepublish|date("jS M Y") }}</small></p>
         <p class="link btn btn-outline">Read article</p>
       </a>
     {% endfor %}
