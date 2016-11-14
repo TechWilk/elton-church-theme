@@ -11,6 +11,23 @@
     <div class="news-article text">
       {{ news.body }}
     </div>
+    {% if news.gallery|length > 0 %}
+      <div class="images">
+        {% for key, image in news.gallery %}
+          <a href="#img{{ key }}" class="image">
+            <img src="{{ image|thumbnail(160, 120, 'c') }}" width="160" height="120" alt="{{ image.title }}" />
+          </a>
+          <a href="#_" class="lightbox" id="img{{ key }}">
+            <figure>
+              <img src="{{ image|thumbnail(1000, 750, 'r') }}" width="1000" height="750" alt="{{ image.title }}" />
+              <figcaption>
+                {{ image.title }}
+              </figcaption>
+            </figure>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
     <small>Written on {{ news.datepublish|date('jS M Y') }}</small>
     {% set previous = record.previous('id') %}
     {% set next = record.next('id') %}
