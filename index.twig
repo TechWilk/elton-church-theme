@@ -72,7 +72,7 @@
     {% for group in Activities %}
       <a class="border no-link" href="{{ group.link }}">
         {% if group.image is not empty %}
-          <img src="{{ group.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ group.name|e }}">
+          <img src="{{ group.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ group.values.image.alt|e }}">
         {% endif %}
         <h4>{{ group.name|e }}</h4>
         <p>{{ group.teaser }}</p>
@@ -94,7 +94,7 @@
     {% for article in news %}
       <article class="border">
         {% if article.image is not empty %}
-          <img src="{{ article.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ article.name|e }}">
+          <img src="{{ article.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ article.values.image.alt|e }}">
         {% endif %}
         <h3>{{ article.title|e }}</h3>
         <p>{{ article.teaser|e }}</p>

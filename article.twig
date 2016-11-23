@@ -55,7 +55,7 @@
     {% for article in othernews %}
       <div class="border">
         {% if article.image is not empty %}
-          <img src="{{ article.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ article.title|e }}">
+          <img src="{{ article.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ article.values.image.alt|e }}">
         {% endif %}
         <h3>{{ article.headline|e }}</h3>
         <p>{{ article.teaser|e }}</p>
