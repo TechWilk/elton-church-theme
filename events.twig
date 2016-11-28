@@ -22,7 +22,7 @@
 </section>
 {% endif %}
 
-{% setcontent events = 'events' where { until: '<=now' } orderby 'date' %}
+{% setcontent events = 'events' where { until: '<=now' } orderby '-date' %}
 {% if events|length > 0 %}
 <section id="previous">
   <div>
