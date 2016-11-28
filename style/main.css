@@ -432,7 +432,7 @@ main section > div div {
 main section > div .border {
   margin: auto 0.6rem 1.5rem;
   vertical-align: top;
-  border: 0.5rem #C056B8 solid;
+  border: 0.5rem #dadada solid;
   padding: 2rem 2rem 2.5rem;
 }
 main section > div .border p {
