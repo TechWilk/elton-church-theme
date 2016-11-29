@@ -48,6 +48,12 @@
         {% endif %}
         <h3>{{ event.title|e }}</h3>
         <p>{{ event.teaser|e }}</p>
+        {% if event.date|date("d/m/Y") == event.until|date("d/m/Y") %}
+          {% set date = "#{event.date|date('l jS M Y')}"  %}
+        {% else %}
+          {% set date = "#{event.date|date('jS M')} - #{event.until|date('jS M Y')}"  %}
+        {% endif %}
+        <p><small>{{ date }}</small></p>
         <a href="{{ event.link }}" class="btn btn-outline">Find out more</a>
       </div>
     {% endfor %}
