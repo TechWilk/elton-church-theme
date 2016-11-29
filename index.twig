@@ -15,20 +15,7 @@
   <div>
     <h2 class="title">Upcoming Events</h2>
     {% for event in events %}
-      <div class="border">
-        {% if event.image is not empty %}
-          <img src="{{ event.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ event.title|e }}">
-        {% endif %}
-        <h3>{{ event.title|e }}</h3>
-        <p>{{ event.teaser|e }}</p>
-        {% if event.date|date("d/m/Y") == event.until|date("d/m/Y") %}
-          {% set date = "#{event.date|date('l jS M Y')}"  %}
-        {% else %}
-          {% set date = "#{event.date|date('jS M')} - #{event.until|date('jS M Y')}"  %}
-        {% endif %}
-        <p><small>{{ date }}</small></p>
-        <a href="{{ event.link }}" class="btn btn-outline">Find out more</a>
-      </div>
+      {% include "partials/_event.twig" %}
     {% endfor %}
     {% if events|length == 3 %}
       <div>
