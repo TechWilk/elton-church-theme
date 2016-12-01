@@ -7,7 +7,7 @@
   "startDate": "{{ event.date | date('Y-m-d\\TH:i:sP') }}",
   "endDate": "{{ event.until | date('Y-m-d\\TH:i:sP') }}",
   {% if event.image is not empty %}
-  "image": "{{ event.image|image(520,350) }}",
+  "image": "{{ paths.hosturl ~ event.image|image(520,350) }}",
   {% endif %}
   {% set buildings = event.related('buildings') %}
   {% for building in buildings %}
