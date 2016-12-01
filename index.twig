@@ -85,15 +85,7 @@
   <div>
     <h2 class="title">Parish News</h2>
     {% for article in news %}
-      <article class="border">
-        {% if article.image is not empty %}
-          <img src="{{ article.image|thumbnail(320,240) }}" width="320" height="240" alt="{{ article.values.image.alt|e }}">
-        {% endif %}
-        <h3>{{ article.title|e }}</h3>
-        <p>{{ article.teaser|e }}</p>
-        <p><small>{{ article.datepublish|date('jS M Y') }}</small></p>
-        <a href="{{ article.link }}" class="btn btn-outline">Read article</a>
-      </article>
+      {% include 'partials/_article.twig' %}
     {% endfor %}
 
     {% if news|length == 3 %}
