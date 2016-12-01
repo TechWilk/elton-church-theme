@@ -1,0 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Event",
+  "name": "{{ event.title|e }}",
+  "description": "{{ event.teaser|e }}",
+  "startDate": "{{ event.date | date('Y-m-d\\TH:i:sP') }}",
+  "endDate": "{{ event.until | date('Y-m-d\\TH:i:sP') }}",
+  {% if event.image is not empty %}
+  "image": "{{ event.image|image(520,350) }}",
+  {% endif %}
+  {% set buildings = event.related('buildings') %}
+  {% for building in buildings %}
+  "location": {
+     "@type": "Place",
+     "name": "{{ building.name }}",
+     "address": "{{ building.address }}",
+     "sameAs": "{{ paths.hosturl ~ building.link }}"
+  },
+  {% endfor %}
+  "url": "{{ paths.hosturl ~ event.link }}"
+}
+</script>
