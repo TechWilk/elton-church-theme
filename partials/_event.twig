@@ -4,6 +4,12 @@
   {% endif %}
   <h3>{{ event.title|e }}</h3>
   <p>{{ event.teaser|e }}</p>
+  {% set buildings = event.related('buildings') %}
+  {% if buildings|length > 0 %}
+    {% for building in buildings %}
+      <p><a href="{{ building.link }}">{{ building.name|e }}</a></p>
+    {% endfor %}
+  {% endif %}
   {% if event.date|date("d/m/Y") == event.until|date("d/m/Y") %}
     {% set date = "#{event.date|date('l jS M Y')}"  %}
   {% else %}
