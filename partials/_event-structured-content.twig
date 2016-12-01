@@ -13,8 +13,8 @@
   {% for building in buildings %}
   "location": {
      "@type": "Place",
-     "name": "{{ building.name }}",
-     "address": "{{ building.address }}",
+     "name": "{{ building.name|e }}",
+     "address": "{{ building.address|replace('\n', ', ')|e }}",
      "sameAs": "{{ paths.hosturl ~ building.link }}"
   },
   {% endfor %}
