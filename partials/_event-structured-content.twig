@@ -2,8 +2,8 @@
 {
   "@context": "http://schema.org",
   "@type": "Event",
-  "name": "{{ event.title|e('js') }}",
-  "description": "{{ event.teaser|e('js') }}",
+  "name": "{{ event.title|replace({"\"": "\\\""})|raw }}",
+  "description": "{{ event.teaser|replace({"\"": "\\\""})|raw }}",
   "startDate": "{{ event.date | date('Y-m-d\\TH:i:sP') }}",
   "endDate": "{{ event.until | date('Y-m-d\\TH:i:sP') }}",
   {% if event.image is not empty %}
@@ -13,8 +13,8 @@
   {% for building in buildings %}
   "location": {
      "@type": "Place",
-     "name": "{{ building.name|e('js') }}",
-     "address": "{{ building.address|replace('\n', ', ')|e('js') }}",
+     "name": "{{ building.name|replace({"\"": "\\\""})|raw }}",
+     "address": "{{ building.address|replace({'\n': ', ', "\"": "\\\""})|raw }}",
      "sameAs": "{{ paths.hosturl ~ building.link }}"
   },
   {% endfor %}
