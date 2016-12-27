@@ -317,7 +317,6 @@ header
   {
     background-color: @headerBarBackground;
     color: @headerBarText;
-    padding: 10px;
     text-align: center;
 
     *
@@ -326,31 +325,47 @@ header
       vertical-align: top;
     }
 
-    a
+    > div
     {
-      color: @headerBarText;
-      text-decoration: none;
-      padding: 0 2rem;
+       margin: 0 2rem;
+       padding: 10px;
 
-      &:hover
+      h3
       {
-        text-decoration: underline;
+        padding: 0;
+        margin: 0;
+        width: 2.4rem;
+        height: 2.4rem;
+        text-indent: -9999px;
+        background-size: 2.4rem 2.4rem;
       }
-    }
 
-    div
-    {
-       margin: 0 3rem;
-    }
+      a
+      {
+        color: @headerBarText;
+        text-decoration: none;
 
-    h3
-    {
-      padding: 0;
-      margin: 0;
-      width: 2.4rem;
-      height: 2.4rem;
-      text-indent: -9999px;
-      background-size: 2.4rem 2.4rem;
+        &:hover
+        {
+          text-decoration: underline;
+        }
+
+        display: none;
+        padding: 1rem 2rem;
+        position: absolute;
+        margin-top: 1rem;
+        background-color: @secondaryColor;
+        width: 100%;
+        left: 0;
+      }
+
+      &:focus a,
+      &:hover a,
+      a:focus,
+      a:hover
+      {
+        display: inline-block;
+      }
     }
   }
 
@@ -921,6 +936,21 @@ footer
     .logo h1
     {
       width: 74%;
+    }
+
+    .header-top
+    {
+      > div
+      {
+        a
+        {
+          display: inline-block;
+          padding: 0 2rem;
+          position: relative;
+          width: auto;
+          margin: 0;
+        }
+      }
     }
 
     nav
