@@ -244,7 +244,7 @@ header .header-top > div a {
   color: #000;
   text-decoration: none;
   display: none;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
   position: absolute;
   margin-top: 1rem;
   background-color: #9CEE33;
