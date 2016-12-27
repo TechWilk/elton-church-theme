@@ -94,6 +94,8 @@
     <ul>
       <li class="separate">{{ html.hyperlink("View all", "news#all", true) }}</li>
       {% if news|length > 0 %}
+        <li>{{ html.hyperlink("Latest article", news|first.link) }}</li>
+        {#
         {% for item in news %}
           {% if item.title|length > 22 %}
             <li>{{ html.hyperlink(item.title|slice(0,22) ~ "...", item.link) }}</li>
@@ -101,6 +103,7 @@
             <li>{{ html.hyperlink(item.title, item.link) }}</li>
           {% endif %}
         {% endfor %}
+        #}
       {% endif %}
     </ul>
   </li>
