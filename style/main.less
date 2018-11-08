@@ -11,6 +11,8 @@
 
 @headerBarBackground: @secondaryColor;
 @headerBarText: #000;
+@headerIconSize: 2.4rem;
+@hamburgerColour: @headerBarText;
 
 @headerBackground: #fff;
 @headerText: #000;
@@ -354,7 +356,7 @@ header
         padding: 1rem 0;
         position: absolute;
         margin-top: 1rem;
-        background-color: @secondaryColor;
+        background-color: @headerBarBackground;
         width: 100%;
         left: 0;
       }
@@ -374,8 +376,10 @@ header
     display: none; // shown in media query (max-width: 720px)
     position:relative;
     margin:0 auto 2rem;
-    height:50px;
-    width:50px;
+    height: @headerIconSize;
+    width: @headerIconSize;
+    float: right;
+    //background-color: @headerBarBackground;
 
     * {
       transition:all 0.3s;
@@ -402,9 +406,9 @@ header
     .spinner4
     {
       position:absolute;
-      height:5px;
+      height:3px;
       width:100%;
-      background-color:@primaryColor;
+      background-color: @hamburgerColour;
     }
 
     .diagonal.part-1 {position:relative;float:left;}
@@ -413,7 +417,7 @@ header
 
     input[type=checkbox]:checked ~ .spinner-spin4 > .horizontal {transform:translate(-100px, 0px);-webkit-transform:translate(-100px, 0px); opacity: 0;}
     input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-1 {transform:rotate(-135deg);-webkit-transform:rotate(-135deg);margin-top:10px;}
-    input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-2 {transform:rotate(135deg);-webkit-transform:rotate(135deg);margin-top:-16px;}
+    input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-2 {transform:rotate(135deg);-webkit-transform:rotate(135deg);margin-top:-13px;}
     input[type=checkbox]:checked ~ nav {display:none;}
   }
 
@@ -423,6 +427,13 @@ header
     -webkit-transition: all .5s ease;
        -moz-transition: all .5s ease;
             transition: all .5s ease;
+
+    // make into mobile menu
+    position: absolute;
+    margin-top: 1rem;
+    width: 100%;
+    left: 0;
+    top: 0;
 
     > ul
     {
@@ -956,6 +967,8 @@ footer
     nav
     {
       background-color: transparent;
+      position: relative;
+      margin-top: 0;
 
       > ul > li > .parent + ul,
       > ul > li > .current + ul,

@@ -264,8 +264,9 @@ header .hamburger {
   display: none;
   position: relative;
   margin: 0 auto 2rem;
-  height: 50px;
-  width: 50px;
+  height: 2.4rem;
+  width: 2.4rem;
+  float: right;
 }
 header .hamburger * {
   transition: all 0.3s;
@@ -286,9 +287,9 @@ header .hamburger label {
 }
 header .hamburger .spinner4 {
   position: absolute;
-  height: 5px;
+  height: 3px;
   width: 100%;
-  background-color: #C056B8;
+  background-color: #000;
 }
 header .hamburger .diagonal.part-1 {
   position: relative;
@@ -317,7 +318,7 @@ header .hamburger input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part
 header .hamburger input[type=checkbox]:checked ~ .spinner-spin4 > .diagonal.part-2 {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
-  margin-top: -16px;
+  margin-top: -13px;
 }
 header .hamburger input[type=checkbox]:checked ~ nav {
   display: none;
@@ -327,6 +328,11 @@ header nav {
   -webkit-transition: all .5s ease;
   -moz-transition: all .5s ease;
   transition: all .5s ease;
+  position: absolute;
+  margin-top: 1rem;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 header nav > ul {
   max-width: 960px;
@@ -642,6 +648,8 @@ footer .developer {
   }
   header nav {
     background-color: transparent;
+    position: relative;
+    margin-top: 0;
   }
   header nav > ul > li > .parent + ul,
   header nav > ul > li > .current + ul {

@@ -11,6 +11,14 @@
     <h3 style="background-image: url({{ paths.theme ~ 'images/icons/facebook.svg' }})">Facebook</h3>
     <a href="{{ 'https://www.facebook.com/StJamesTheGreatInce' }}">{{ 'Find us on Facebook'|e }}</a>
   </div>
+  <div class="hamburger">
+    <input id="spinner-form4" type="checkbox" />
+    <label class="spinner-spin4" for="spinner-form4">
+      <div class="spinner4 diagonal part-1"></div>
+      <div class="spinner4 horizontal"></div>
+      <div class="spinner4 diagonal part-2"></div>
+    </label>
+  </div>
 </div>
 <div class="logo">
   <a href="{{ paths.root }}">
@@ -23,14 +31,6 @@
       <li>Elton</li>
     </ul>
   </h1>
-</div>
-<div class="hamburger">
-  <input id="spinner-form4" type="checkbox" />
-  <label class="spinner-spin4" for="spinner-form4">
-    <div class="spinner4 diagonal part-1"></div>
-    <div class="spinner4 horizontal"></div>
-    <div class="spinner4 diagonal part-2"></div>
-  </label>
 </div>
 <nav>
   {{ menu('main', 'partials/_menu.twig') }}
