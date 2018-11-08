@@ -6,4 +6,5 @@
   <p>{{ article.teaser|e }}</p>
   <p><small>{{ article.datepublish|date('jS M Y') }}</small></p>
   <a href="{{ article.link }}" class="btn btn-outline">Read article</a>
+  {% include "partials/_article-structured-content.twig" %}
 </article>

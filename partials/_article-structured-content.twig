@@ -1,0 +1,30 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{ article.title|replace({"\"": "\\\""})|raw }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ article.image|thumbnail(320,240) }}",
+    "height": 240,
+    "width": 320
+  },
+  "datePublished": "{{ article.datepublish|date('Y-m-d\\TH:i:sP') }}",
+  "dateModified": "{{ article.datechanged|date('Y-m-d\\TH:i:sP') }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ article.user.displayname|replace({"\"": "\\\""})|raw }}"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "{{ app.config.get('general/sitename')|replace({"\"": "\\\""})|raw }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://google.com/logo.jpg",
+      "width": 600,
+      "height": 60
+    }
+  },
+  "description": "{{ article.teaser|replace({"\"": "\\\""})|raw }}"
+}
+</script>
